@@ -6,17 +6,6 @@ sudo apt-get install apache2 apache2-utils -y
 
 sudo systemctl enable apache2
 sudo systemctl start apache2
-sudo systemctl status apache2
-
-echo "Press enter to continue"
-while [ true ] ; do
-read -t 3 -n 1
-if [ $? = 0 ] ; then
-exit ;
-else
-echo "Waiting for keypress"
-fi
-done
 
 echo "Allowing HTTP traffic"
 sudo ufw allow in "Apache"
