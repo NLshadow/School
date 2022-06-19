@@ -13,10 +13,10 @@ sudo ufw status
 sleep 5 &
 
 echo "Installing mysql"
-sudo apt-get install mysql-client mysql-server
+sudo apt-get install mysql-client mysql-server -y
 
 echo "Installing php"
-sudo apt-get install php libapache2-mod-php php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip 
+sudo apt-get install php libapache2-mod-php php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip -y
 
 sudo systemctl restart apache2
 
