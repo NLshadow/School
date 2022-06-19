@@ -21,7 +21,8 @@ sudo systemctl restart apache2
 
 echo "Downloading Wordpress"
 wget -c http://wordpress.org/latest.tar.gz /home/student/Downloads
-tar -xvzf /home/student/Downloads/latest.tar.gz /var/www/wordpress
+tar -xvzf /home/student/Downloads/latest.tar.gz 
+mv wordpress /var/www/
 
 echo "Editing Premissions"
 sudo chown -R www-data:www-data /var/www/wordpress
