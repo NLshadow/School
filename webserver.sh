@@ -10,21 +10,30 @@ sudo systemctl start apache2
 echo "Allowing HTTP traffic"
 sudo ufw allow in "Apache"
 sudo ufw status
-sleep 5 &
 
 echo "Installing mysql"
-sudo apt-get install mysql-client mysql-server -y
+sudo apt-get install mysql-client mysql-server
 
 echo "Installing php"
-sudo apt-get install php libapache2-mod-php php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip -y
+sudo apt-get install php libapache2-mod-php php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip 
 
 sudo systemctl restart apache2
 
 echo "Downloading Wordpress"
-wget -c http://wordpress.org/latest.tar.gz 
-tar -xvzf latest.tar.gz 
-mv wordpress /var/www
+wget -c http://wordpress.org/latest.tar.gz /home/student/Downloads
+tar -xvzf /home/student/Downloads/latest.tar.gz /var/www/wordpress
 
 echo "Editing Premissions"
 sudo chown -R www-data:www-data /var/www/wordpress
 sudo chmod -R 755 /var/www/wordpress/
+
+echo "Creating self-signed cert"
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/webserver.key -out /etc/ssl/certs/webserver.crt
+
+wget https://raw.githubusercontent.com/NLshadow/School/main/wordpress.conf -P /etc/apache2/sites-available/
+
+echo "Change redirect address to correct dns name!"
+sleep 5&
+
+sudo a2ensite wordpress.conf
+sudo service apache2 restart
