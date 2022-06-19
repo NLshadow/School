@@ -7,4 +7,5 @@ echo "Change redirect address to correct dns name!"
 sleep 5&
 
 sudo a2ensite wordpress.conf
+sleep 10&
 sudo service apache2 restart
