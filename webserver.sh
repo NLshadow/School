@@ -21,8 +21,8 @@ sudo apt-get install php libapache2-mod-php php-mysql php-curl php-gd php-mbstri
 sudo systemctl restart apache2
 
 echo "Downloading Wordpress"
-wget -c http://wordpress.org/latest.tar.gz /home/student/Downloads
-tar -xvzf /home/student/Downloads/latest.tar.gz /var/www/wordpress
+wget -c http://wordpress.org/latest.tar.gz 
+tar -xvzf /home/student/Downloads/latest.tar.gz 
 
 echo "Editing Premissions"
 sudo chown -R www-data:www-data /var/www/wordpress
